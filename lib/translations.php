@@ -9,4 +9,8 @@ return [
 		'modules' => 'Module',
 		'modules.empty' => 'Keine Module',
 	],
+	'ru' => [
+		'modules' => 'Модули',
+		'modules.empty' => 'Модулей пока нет',
+	],
 ];
