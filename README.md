@@ -1,21 +1,21 @@
 ![Kirby Modules](https://user-images.githubusercontent.com/7975568/93752618-37d29000-fbff-11ea-8276-abd679ef92ae.png)
 
-This plugin makes it super easy to create modular websites with Kirby.
+Этот плагин упрощает создание модульных веб-сайтов с помощью Kirby.
 
-## Features
+## Особенности
 
-- Modules are bundled in `site/modules` and registered as regular blueprints and templates.
-- Every module is available to create in the `modules` section without editing any other file.
-- Modules can not be accessed directly and will automatically redirect to the parent page with an anchor.
-- The container page is automatically created and hidden in the panel.
-- You can preview draft modules on their parent pages via the panel preview button.
+- Модули объединены в `site/modules` и зарегистрированы как обычные blueprints и templates.
+- Каждый модуль доступен для создания в разделе `modules` без редактирования любого другого файла.
+- К модулям нельзя получить доступ напрямую, они автоматически перенаправляют на родительскую страницу с анкором.
+- Контейнер страницы создается автоматически и скрыт на панели.
+- Вы можете предварительно просмотреть черновики модулей на их родительских страницах с помощью кнопки предварительного просмотра на панели.
 
 ![Preview](https://user-images.githubusercontent.com/7975568/94016693-bb7eaf00-fdae-11ea-8114-f0862391ff91.gif)
 
-## What's a Module?
+## Что такое модуль?
 
-A module is a regular page, differentiated from other pages by being inside a modules container.
-This approach makes it possible to use pages as modules without sacrificing regular subpages.
+Модуль - это обычная страница, которая отличается от других страниц тем, что находится внутри контейнера модулей.
+Такой подход позволяет использовать страницы как модули без ущерба для обычных подстраниц.
 
 ```
 📄 Page
@@ -26,17 +26,17 @@ This approach makes it possible to use pages as modules without sacrificing regu
     📄 Module B
 ```
 
-Module blueprints and templates live in a separate `site/modules` folder. This way you can easily reuse modules across projects and share them with other people.
+Blueprints и Templates модулей находятся в отдельной папке site/modules. Таким образом, вы можете легко повторно использовать модули в проектах и делиться ими с другими людьми.
 
-## Instructions
+## Инструкции
 
-Add a `modules` section to any page blueprint and a modules container will be automatically created.
+Добавьте раздел `modules` к любому blueprint страницы, и контейнер модулей будет создан автоматически.
  
-You can create modules by putting them in a `site/modules` folder. For example you can add a `site/modules/text` folder with the template `text.php` and the blueprint `text.yml`.
+Вы можете создавать модули, помещая их в папку `site/modules`. Например, вы можете добавить папку `site/modules/text` с template `text.php` и blueprint `text.yml`.
 
-In the parent page template you can then use `<?php $page->renderModules() ?>` to render the modules.
+Затем в template родительской страницы вы можете использовать `<?php $page->renderModules() ?>`для рендеринга модулей.
 
-### Parent Page
+### Родительская страница
 
 #### `site/blueprints/pages/default.yml`
 
@@ -52,7 +52,7 @@ sections:
 <?php $page->renderModules() ?>
 ```
 
-### Example Module
+### Пример модуля
 
 #### `site/modules/text/text.yml`
 
@@ -71,15 +71,15 @@ fields:
 </div>
 ```
 
-You can access the module page object with `$module` and the parent page object with `$page`.
-The `$module->moduleId()` method returns the module ID, e.g. `module_text` or `module_gallery`.
+Вы можете получить доступ к объекту модуля страницы с помощью `$module` и к объекту родительской страницы с помощью `$page`.
+Метод `$module->moduleId()` возвращает идентификатор ID модуля, например `module_text` или `module_gallery`.
 
-## Options
+## Параметры
 
-### Default Module Blueprint
+### Blueprint модуля по умолчанию
 
-By default, the `text` module will be the first/default option in the "Add page" modal.
-You can overwrite it in your `site/config/config.php`:
+По умолчанию модуль `text` будет first/default опцией в модальном окне "Add page".
+Вы можете перезаписать его в своем `site/config/config.php`:
 
 ```php
 return [
@@ -87,9 +87,9 @@ return [
 ];
 ```
 
-### Autopublish Modules
+### Автопубликация модулей
 
-You can turn on automatic publishing for modules in your `site/config/config.php`:
+Вы можете включить автоматическую публикацию модулей в вашем `site/config/config.php`:
 
 ```php
 return [
@@ -97,10 +97,10 @@ return [
 ];
 ```
 
-### Custom Module Model
+### Кастомная модель модуля
 
-This plugin creates a `ModulePage` model, overwriting certain methods.
-You can extend this model with your own model:
+Этот плагин создает модель `ModulePage`, перезаписывая определенные методы.
+Вы можете расширить эту модель своей собственной моделью:
 
 ```php
 // site/config/config.php
